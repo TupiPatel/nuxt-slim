@@ -1,9 +1,11 @@
 <template>
   <div class="container">
+   Counter : {{this.$store.state.store.counter}}
+   <button @click="add_one"> Add </button>
     <div>
       <b-card>
         Welcome To Our Video Library, Please Log In
-
+        
         <b-form @submit="onSubmit">
           <b-form-group
             id="input-group-1"
@@ -26,18 +28,28 @@
 </template>
 
 <script>
+import axios from '~/plugins/axios'
 export default {
+  async asyncData () {
+    let {data} = await axios.get('/users')
+    console.log(data)
+    return data
+  },
   data() {
     return {
       form: {
-        email: ''
+        email: '',
       },
     };
   },
   methods: {
-    onSubmit(){
-      console.log('A form was submitted');
+    onSubmit () {
+       
+      console.log ('A form was submitted');
     },
+    add_one(){
+      this.$store.commit('store/increment')
+    }
   }
 }
 </script>

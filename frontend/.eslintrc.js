@@ -17,6 +17,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     "import/extensions": 0,
+    "no-console": 0,    
     'import/no-extraneous-dependencies': [
       'error',
       {
