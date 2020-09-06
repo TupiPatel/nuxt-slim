@@ -62,6 +62,6 @@ export default {
   build: {
   },
   env: {
-    HOST_URL: process.env.HOST_URL || 'http://0.0.0.0:8181'
+    HOST_URL: process.env.HOST_URL || 'http://localhost:8080'
   },
 }

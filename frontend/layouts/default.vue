@@ -1,8 +1,27 @@
 <template>
   <div>
+      <HeaderNav />
     <Nuxt />
+    <div>My footer</div>
   </div>
 </template>
+
+<script>
+
+    import HeaderNav from '~/components/HeaderNav'
+    import FooterNav from '~/components/FooterNav'
+
+    export default {
+
+        components: {
+            HeaderNav,
+            FooterNav
+        },
+
+    }
+
+</script>
+
 
 <style>
 html {

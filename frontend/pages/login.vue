@@ -1,26 +1,22 @@
 <template>
   <div class="container">
+ 
    Counter : {{this.$store.state.store.counter}}
-   <button @click="add_one"> Add </button>
+   <button @click="add_one"> Add </button> 
     <div>
       <b-card>
         Welcome To Our Video Library, Please Log In
-        
-        <b-form @submit="onSubmit">
-          <b-form-group
-            id="input-group-1"
-            label="Email address:"
-            label-for="input-1"
-          >
+        username: {{this.form.username}} {{message}}
+        <b-form @submit.prevent="onSubmit">
+          
             <b-form-input
               id="input-1"
-              v-model="form.email"
-              type="email"
+              v-model="form.username"
+              type="text"
               required
-              placeholder="Enter email"
+              placeholder="Username"
             ></b-form-input>
-          </b-form-group>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-button type="submit" class="btn-login">Login</b-button>
         </b-form>
       </b-card>
     </div>
@@ -31,23 +27,40 @@
 import axios from '~/plugins/axios'
 export default {
   async asyncData () {
-    let {data} = await axios.get('/users')
+ 
+    let {data} = await axios.get('/')
     console.log(data)
+   
+ 
     return data
   },
   data() {
     return {
       form: {
-        email: '',
+        username: '',
       },
     };
   },
   methods: {
     onSubmit () {
+      let formData = new FormData()
+      formData.append('data',JSON.stringify(this.form))
+      
+      
+      axios.post('/login',formData)
+        .then((Response) => {
+          console.log(Response);
+          console.log(this.form.username);
+          console.log ('A form was submitted');
+        })
+        .catch((err) => {
+         // this.errors.push(err)
+        })
        
-      console.log ('A form was submitted');
+     
     },
     add_one(){
+         
       this.$store.commit('store/increment')
     }
   }
@@ -91,5 +104,8 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.btn-login{
+  background-color: #053b34 ;
 }
 </style>
