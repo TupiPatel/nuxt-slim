@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domain\User;
+namespace App\Domain\Video;
 
-interface UserRepository
+interface VideoRepository
 {
     /**
-     * @return User[]
+     * @return Video[]
      */
     public function findAll(): array;
 
@@ -15,13 +15,13 @@ interface UserRepository
      * @return User
      * @throws UserNotFoundException
      */
-    public function findUserOfId(int $id): User;
+  //  public function findUserOfId(int $id): User;
 
  /**
      * @param int $id
      * @return User
      * @throws UserNotFoundException
      */
-    public function existUser(string $username);
+   // public function existUser(string $username);
 
 }

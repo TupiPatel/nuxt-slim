@@ -1,12 +1,12 @@
 <template>
   <div class="container">
  
-   Counter : {{this.$store.state.store.counter}}
-   <button @click="add_one"> Add </button> 
+  <!-- Counter : {{this.$store.state.store.counter}}
+   <button @click="add_one"> Add </button> -->
     <div>
+      {{this.form.errors}}
       <b-card>
         Welcome To Our Video Library, Please Log In
-        username: {{this.form.username}} {{message}}
         <b-form @submit.prevent="onSubmit">
           
             <b-form-input
@@ -26,18 +26,19 @@
 <script>
 import axios from '~/plugins/axios'
 export default {
-  async asyncData () {
+   mounted(){
  
-    let {data} = await axios.get('/')
-    console.log(data)
-   
- 
-    return data
-  },
+      if(localStorage.getItem('loggedIn') === 'true' ){
+          console.log ('login check');
+
+          this.$router.push('/videos')
+      }
+   },
   data() {
     return {
       form: {
         username: '',
+        errors : ''
       },
     };
   },
@@ -49,12 +50,13 @@ export default {
       
       axios.post('/login',formData)
         .then((Response) => {
-          console.log(Response);
-          console.log(this.form.username);
-          console.log ('A form was submitted');
+         // console.log(Response.data.data.id);
+          localStorage.setItem('loggedIn', "true");
+          this.$store.commit('store/login')
+          this.$router.push('/videos')
         })
         .catch((err) => {
-         // this.errors.push(err)
+          this.form.errors = "The user you requested does not exist"
         })
        
      
@@ -62,7 +64,8 @@ export default {
     add_one(){
          
       this.$store.commit('store/increment')
-    }
+    },
+   
   }
 }
 </script>

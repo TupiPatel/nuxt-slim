@@ -35,27 +35,27 @@ api. The video endpoint should return this JSON:
   "data": [
     {
       "id": 1,
-      "title": "What It’s Like To Work At AlgaeCal,
+      "title": "What It’s Like To Work At AlgaeCal",
       "description": "Discover what it’s like to work at AlgaeCal with this quick video!",
       "video_id": "m3ralniniq"
     },
     {
       "id": 2,
-      "title": "Esther Mangini Testimonial,
+      "title": "Esther Mangini Testimonial",
       "category": "Testimonials",
-      "description": "Esther’s journey to healthier bones”,
+      "description": "Esther's journey to healthier bones",
       "video_id": "ybyot0dm7q"
     },
     {
       "id": 3,
       "title": "Teresa Cucurull Testimonial",
-      "description": "Teresa’s journey to healthier bones”,
+      "description": "Teresa's journey to healthier bones",
       "video_id": "mhmv73k989"
     },
     {
       "id": 4,
-      "title": "Perfect Pilates For Osteoporosis - Legwork,
-      "description": "Bone Healthy Exercises!”,
+      "title": "Perfect Pilates For Osteoporosis - Legwork",
+      "description": "Bone Healthy Exercises!",
       "video_id": "3n5p02h26w"
     },
     {

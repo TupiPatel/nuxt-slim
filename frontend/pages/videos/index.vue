@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    
     <div class="row">
       <div class="col">
         <h1>Welcome to Our Video Library</h1>
@@ -21,6 +22,14 @@
 
 <script>
 export default {
+  mounted(){
+ 
+      if(localStorage.getItem('loggedIn') !== 'true' ){
+          console.log ('login check');
+
+          this.$router.push('/login')
+      }
+   },
   data() {
     return {
       form: {
@@ -32,6 +41,7 @@ export default {
     onSubmit(){
       console.log('A form was submitted');
     },
+   
   }
 }
 </script>

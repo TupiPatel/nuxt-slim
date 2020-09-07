@@ -85,4 +85,5 @@ class User implements JsonSerializable
             'lastName' => $this->lastName,
         ];
     }
+    
 }
