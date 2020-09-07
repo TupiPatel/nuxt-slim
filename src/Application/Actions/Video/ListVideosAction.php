@@ -15,7 +15,7 @@ class ListVideosAction extends VideoAction
     {
         $videos = $this->videoRepository->findAll();
 
-        $this->logger->info("Users list was viewed.");
+        $this->logger->info("Video list was viewed.");
 
         return $this->respondWithData($videos);
     }

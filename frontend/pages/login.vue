@@ -1,6 +1,6 @@
 <template>
   <div class="container">
- 
+
   <!-- Counter : {{this.$store.state.store.counter}}
    <button @click="add_one"> Add </button> -->
     <div>

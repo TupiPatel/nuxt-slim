@@ -6,6 +6,7 @@ use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\User\ExistUsersAction;
 
 use App\Application\Actions\Video\ListVideosAction;
+use App\Application\Actions\Video\ViewVideoAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -42,6 +43,6 @@ return function (App $app) {
     $app->group('/videos', function (Group $group) {
         $group->get('', ListVideosAction::class);
        
-       // $group->get('/{id}', ViewUserAction::class);
+        $group->get('/{id}', ViewVideoAction::class);
     });
 };
