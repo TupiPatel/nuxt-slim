@@ -42,13 +42,16 @@ class InMemoryVideoRepository implements VideoRepository
     /**
      * {@inheritdoc}
      */
-    public function findVideoOfId(int $id): Video
+    public function findVideoOfId(int $video_id): Video
     {
-        if (!isset($this->videos[$id])) {
-            throw new VideoNotFoundException();
-        }
 
-        return $this->videos[$id];
+        for($i=1; $i<=7; $i++){
+            if($this->videos[$i]->getVideo_id() == $video_id)
+            {
+                return $this->videos[$i];
+                
+            }
+        }
     }
    
 }

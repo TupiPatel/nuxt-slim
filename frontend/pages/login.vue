@@ -50,7 +50,7 @@ export default {
       
       axios.post('/login',formData)
         .then((Response) => {
-         // console.log(Response.data.data.id);
+          console.log(Response.data.data.id);
           localStorage.setItem('loggedIn', "true");
           this.$store.commit('store/login')
           this.$router.push('/videos')
