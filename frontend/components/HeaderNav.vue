@@ -1,12 +1,9 @@
 <template>
-    <div>
-        <nuxt-link to="/videos"  v-if="isAuthenticated">Videos</nuxt-link>
-       <!-- <nuxt-link to="/login" v-if="isAuthenticated" >Login</nuxt-link> -->
-        <button @click="logout" v-if="isAuthenticated"> Logout </button> 
+    <div class="HeaderLinks">
+        <nuxt-link to="/videos"  v-if="isAuthenticated"><label class="link">Videos</label></nuxt-link>
+        <label @click="logout" v-if="isAuthenticated" class="link"> Logout </label> 
     </div>
 </template>
-
-
 
 <script>
 
@@ -20,7 +17,7 @@ export default {
     },
     computed: {
       isAuthenticated() {
-          console.log( this.$store.getters['store/isAuthenticated'])
+         // console.log( this.$store.getters['store/isAuthenticated'])
       return this.$store.getters['store/isAuthenticated'];
     }
     }

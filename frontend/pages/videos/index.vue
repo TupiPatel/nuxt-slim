@@ -1,20 +1,28 @@
 <template>
   <div class="container-fluid">
-    
     <div class="row">
       <div class="col">
-        <h1>Welcome to Our Video Library</h1>
+        <div class="heading">Welcome to Our Video Library</div>
       </div>
     </div>
-
-   <div v-for="val in data" :key="val.id" class="main-div"> 
-      <nuxt-link :to="'videos/' + val.video_id">click</nuxt-link>
-        <div @click="onVideoPlayer(val.video_id)">
-    
-          <img :src="'https://fast.wistia.com/embed/medias/'+ val.video_id+'/swatch'" style="height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-        </div>
+     <div class="category">
+          <select v-model="category"  @change="addCategory(category)" class="dropdown">
+            <option v-bind:value="all">All Videos</option>
+            <option v-for="val in cat" :key="val.id" v-bind:value="val.category" @>{{ val.category }}</option>
+          </select>
+    </div>
+  
+   <div v-for="val in data" :key="val.id" class="row-video"> 
+      <div class="column-video">
+        <nuxt-link :to="'videos/' + val.video_id" >
+          <div >
+           <img :src="'https://fast.wistia.com/embed/medias/'+ val.video_id+'/swatch'" style="height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+           
+          </div>
+        </nuxt-link>
         <div class="title">{{ val.title}}</div>
         <div class="subtitle">{{ val.description}}</div>
+      </div>
     </div> 
     <div class="clear"></div>
     
@@ -28,9 +36,21 @@
 import axios from '~/plugins/axios'
 export default {
   async asyncData () {
-   let {data} = await axios.get('/videos')
-   
-    return data
+    var cat =[]
+    var {data} = await axios.get('/videos')
+  // console.log(data.data)
+   data.data.forEach(element => {
+    // console.log(element.category)
+     var index = cat.findIndex(x => x.category==element.category)
+      if (index === -1){
+         cat.push({category : element.category})
+      }
+      //else console.log("object already exists")
+          
+      
+   });
+    return  {data:data.data,cat:cat}
+
   },
   mounted(){
  
@@ -41,66 +61,52 @@ export default {
       }
       
    },
-  
+  data(){
+      return {
+        category: '',
+        cat:[] ,
+        all:'all' 
+      }
+  },
   methods: {
-    onVideoPlayer(video_id){
-      console.log('A form was submitted' + video_id);
-    },
-   
-  }
+    
+    addCategory(category){
+      
+        console.log(category)
+        axios.get('/videos')
+          .then((res) => {
+            if(category == "all")
+            {
+              console.log(res.data.data)
+              this.data = res.data.data
+            }
+            // console.log(res.data)
+              res.data.data.forEach(element => {
+                  //console.log(element.category)
+                  var index = this.cat.findIndex(x => x.category==element.category)
+                    if (index === -1){
+                      this.cat.push({category : element.category})
+                    }
+                  // else console.log("object already exists")  
+                });
+              //this.cat = res.data.data
+        })
+        if(category != "all")
+        {
+          axios.get('/videos/category/'+category)
+            .then((Response) => {
+              console.log(Response.data);
+
+              this.data = Response.data.data
+            
+            })
+        }
+    } ,
+
+  
+  },
+  
+
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand',
-  'Source Sans Pro',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  Arial,
-  sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  color: #35495e;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 15px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.links {
-  padding-top: 15px;
-}
-
-.main-div{
-  width: 150px;
-  float: left;
-  padding: 20px;
-}
-.clear{
-  clear: both;
-}
-</style>

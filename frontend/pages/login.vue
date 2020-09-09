@@ -6,7 +6,7 @@
     <div>
       {{this.form.errors}}
       <b-card>
-        Welcome To Our Video Library, Please Log In
+        <div class="heading">User Login</div>
         <b-form @submit.prevent="onSubmit">
           
             <b-form-input
@@ -14,7 +14,8 @@
               v-model="form.username"
               type="text"
               required
-              placeholder="Username"
+              placeholder="Please enter your username"
+              class="txtbox"
             ></b-form-input>
           <b-button type="submit" class="btn-login">Login</b-button>
         </b-form>
@@ -69,46 +70,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand',
-  'Source Sans Pro',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  Arial,
-  sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-.btn-login{
-  background-color: #053b34 ;
-}
-</style>

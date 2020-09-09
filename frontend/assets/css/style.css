@@ -1,0 +1,195 @@
+    .container {
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        max-width: 100% !important;
+        background-color : #013b30;
+    }
+    
+    .title {
+        font-family: 'Quicksand',
+        'Source Sans Pro',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        color: #35495e;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .subtitle {
+        font-weight: 300;
+        font-size: 12px;
+        color: #526488;
+        padding-bottom: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    
+    .main-div{
+        width: 150px;
+        float: left;
+        padding: 20px;
+    }
+    .clear{
+        clear: both;
+    }
+
+    .heading {
+        font-family: 'Quicksand',
+        'Source Sans Pro',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        sans-serif;
+        display: block;
+        font-weight: 400;
+        font-size: 35px;
+        color: #027d61;
+        letter-spacing: 1px;
+        padding : 20px;
+    }
+    .btn-login{
+        background-color: #027d61 ;
+        margin : 20px;
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+        border-radius: 1.25rem !important;
+    }
+    .txtbox{
+        width: 400px;
+    }
+    .footer{
+        text-align: center;
+        padding-top : 20px;
+        padding-bottom : 20px;
+    }
+    .HeaderLinks{
+        float: right;
+        margin :auto;
+    }
+    .link{
+        color: #027d61;
+        font-weight: 400;
+    }
+    .link:hover{
+        cursor: pointer;
+    }
+
+
+    /* default.vue start*/
+    .NavHeader{
+        display: flex;
+        padding-top : 20px;
+        padding-bottom : 20px;
+      }
+      
+      
+      
+      html {
+        font-family:
+          'Source Sans Pro',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
+        font-size: 16px;
+        word-spacing: 1px;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
+      }
+      
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      
+      .button--green {
+        display: inline-block;
+        border-radius: 4px;
+        border: 1px solid #3b8070;
+        color: #3b8070;
+        text-decoration: none;
+        padding: 10px 30px;
+      }
+      
+      .button--green:hover {
+        color: #fff;
+        background-color: #3b8070;
+      }
+      
+      .button--grey {
+        display: inline-block;
+        border-radius: 4px;
+        border: 1px solid #35495e;
+        color: #35495e;
+        text-decoration: none;
+        padding: 10px 30px;
+        margin-left: 15px;
+      }
+      
+      .button--grey:hover {
+        color: #fff;
+        background-color: #35495e;
+      }
+    /* default.vue end*/
+
+
+    /* Create three equal columns that floats next to each other */
+    .column-video {
+        float: left;
+        width: 23.33%;
+        margin: 52px;
+    }
+    
+    /* Clear floats after the columns */
+    .row-video:after {
+        content: "";
+        display: table;
+    }
+
+    .container-fluid{
+        width: 1087px !important;
+    }
+    .category{
+      padding-left: 50px;
+    }
+    .dropdown{
+      display: block;
+      width: 100%;
+      height: calc(1.5em + 0.75rem + 2px);
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      width: 300px;
+    }
