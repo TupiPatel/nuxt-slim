@@ -2,30 +2,32 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <div class="heading">Welcome to Our Video Library</div>
+        <div class="heading" style=" padding : 20px 20px 20px 50px;">Welcome to Our Video Library</div>
       </div>
     </div>
-     <div class="category">
+     
+  <div class="category">
           <select v-model="category"  @change="addCategory(category)" class="dropdown">
             <option v-bind:value="all">All Videos</option>
-            <option v-for="val in cat" :key="val.id" v-bind:value="val.category" @>{{ val.category }}</option>
+            <option v-for="val in categoryArr" :key="val.id" v-bind:value="val.category" @>{{ val.category }}</option>
           </select>
     </div>
-  
    <div v-for="val in data" :key="val.id" class="row-video"> 
       <div class="column-video">
-        <nuxt-link :to="'videos/' + val.video_id" >
-          <div >
-           <img :src="'https://fast.wistia.com/embed/medias/'+ val.video_id+'/swatch'" style="height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-           
-          </div>
-        </nuxt-link>
-        <div class="title">{{ val.title}}</div>
-        <div class="subtitle">{{ val.description}}</div>
+          <nuxt-link :to="'videos/' + val.video_id" >
+            <div >
+            <img :src="'https://fast.wistia.com/embed/medias/'+ val.video_id+'/swatch'" style="height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+            
+            </div>
+      
+            <div class="description">
+              <div class="title">{{ val.title}}</div>
+              <div class="subtitle">{{ val.description}}</div>
+            </div>
+          </nuxt-link>
       </div>
     </div> 
     <div class="clear"></div>
-    
   </div>
 </template>
 
@@ -36,24 +38,24 @@
 import axios from '~/plugins/axios'
 export default {
   async asyncData () {
-    var cat =[]
+    var categoryArr =[]
     var {data} = await axios.get('/videos')
-  // console.log(data.data)
-   data.data.forEach(element => {
+    // console.log(data.data)
+    data.data.forEach(element => {
     // console.log(element.category)
-     var index = cat.findIndex(x => x.category==element.category)
+     var index = categoryArr.findIndex(x => x.category==element.category)
       if (index === -1){
-         cat.push({category : element.category})
+         categoryArr.push({category : element.category})
       }
       //else console.log("object already exists")
           
       
    });
-    return  {data:data.data,cat:cat}
+    return  {data:data.data,categoryArr:categoryArr}
 
   },
   mounted(){
- 
+  
       if(localStorage.getItem('loggedIn') !== 'true' ){
           console.log ('login check');
 
@@ -64,7 +66,7 @@ export default {
   data(){
       return {
         category: '',
-        cat:[] ,
+        categoryArr:[] ,
         all:'all' 
       }
   },
@@ -83,13 +85,12 @@ export default {
             // console.log(res.data)
               res.data.data.forEach(element => {
                   //console.log(element.category)
-                  var index = this.cat.findIndex(x => x.category==element.category)
+                  var index = this.categoryArr.findIndex(x => x.category==element.category)
                     if (index === -1){
-                      this.cat.push({category : element.category})
+                      this.categoryArr.push({category : element.category})
                     }
                   // else console.log("object already exists")  
                 });
-              //this.cat = res.data.data
         })
         if(category != "all")
         {

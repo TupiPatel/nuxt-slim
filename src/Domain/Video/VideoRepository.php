@@ -15,13 +15,13 @@ interface VideoRepository
      * @return User
      * @throws UserNotFoundException
      */
-    public function findVideoOfId(int $id): Video;
+    public function findVideoOfId(string $video_id) : Video;
 
  /**
      * @param int $id
      * @return User
      * @throws UserNotFoundException
      */
-   // public function existUser(string $username);
+    public function findCategory(string $category) : array;
 
 }

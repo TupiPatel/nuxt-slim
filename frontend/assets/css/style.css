@@ -8,7 +8,10 @@
         max-width: 100% !important;
         background-color : #013b30;
     }
-    
+    .description{
+      padding-top : 15px;
+    }
+
     .title {
         font-family: 'Quicksand',
         'Source Sans Pro',
@@ -20,17 +23,17 @@
         Arial,
         sans-serif;
         font-weight: 600;
-        font-size: 15px;
-        color: #35495e;
+        font-size: 17px;
+        color: #027d61;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
     
     .subtitle {
-        font-weight: 300;
-        font-size: 12px;
-        color: #526488;
+        font-weight: 400;
+        font-size: 14px;
+        color: #013b30;
         padding-bottom: 15px;
         white-space: nowrap;
         overflow: hidden;
@@ -70,6 +73,7 @@
         padding-left: 25px !important;
         padding-right: 25px !important;
         border-radius: 1.25rem !important;
+        
     }
     .txtbox{
         width: 400px;
@@ -192,4 +196,10 @@
       border-radius: 0.25rem;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       width: 300px;
+    }
+
+    .inner-container{
+      width: 600px;
+      margin: auto;
+      padding: 30px;
     }

@@ -7,6 +7,7 @@ use App\Application\Actions\User\ExistUsersAction;
 
 use App\Application\Actions\Video\ListVideosAction;
 use App\Application\Actions\Video\ViewVideoAction;
+use App\Application\Actions\Video\CategoryVideoAction;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -18,11 +19,6 @@ return function (App $app) {
         // CORS Pre-Flight OPTIONS Request Handler
         return $response;
     });
-
-   /* $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
-        return $response;
-    });*/
 
     $app->get('/', function (Request $request, Response $response, $args) {
         $data = [
@@ -44,5 +40,9 @@ return function (App $app) {
         $group->get('', ListVideosAction::class);
        
         $group->get('/{id}', ViewVideoAction::class);
+        $group->get('/category/{category}', CategoryVideoAction::class);
+       
     });
+
+   
 };

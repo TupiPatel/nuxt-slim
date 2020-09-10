@@ -5,17 +5,17 @@ namespace App\Application\Actions\Video;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
-class ViewVideoAction extends VideoAction
+class CategoryVideoAction extends VideoAction
 {
     /**
      * {@inheritdoc}
      */
     protected function action(): Response
     {
-        $videoId = (string) $this->resolveArg('id');
-        $video = $this->videoRepository->findVideoOfId($videoId);
+        $category = (string) $this->resolveArg('category');
+        $video = $this->videoRepository->findCategory($category);
 
-        $this->logger->info("User of id `${videoId}` was viewed.");
+        $this->logger->info("User of id `${category}` was viewed.");
 
         return $this->respondWithData($video);
     }

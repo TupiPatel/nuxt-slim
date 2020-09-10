@@ -26,6 +26,7 @@ class Video implements JsonSerializable
      * @var string
      */
     private $video_id;
+    private $category;
 
     /**
      * @param int|null  $id
@@ -33,10 +34,11 @@ class Video implements JsonSerializable
      * @param string    $description
      * @param string    $video_id
      */
-    public function __construct(?int $id, string $title, string $description, string $video_id)
+    public function __construct(?int $id,string $category, string $title, string $description, string $video_id)
     {
         $this->id = $id;
-        $this->title = strtolower($title);
+        $this->title = ucfirst($title);
+        $this->category = strtolower($category);
         $this->description = ucfirst($description);
         $this->video_id = ucfirst($video_id);
     }
@@ -74,12 +76,21 @@ class Video implements JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()
     {
         return [
             'id' => $this->id,
+            'category' => $this->category,
             'title' => $this->title,
             'description' => $this->description,
             'video_id' => $this->video_id,
