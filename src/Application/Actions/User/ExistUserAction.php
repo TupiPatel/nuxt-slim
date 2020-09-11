@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 
 
-class ExistUsersAction extends UserAction
+class ExistUserAction extends UserAction
 {
     /**
      * {@inheritdoc}

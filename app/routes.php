@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
-use App\Application\Actions\User\ExistUsersAction;
+use App\Application\Actions\User\ExistUserAction;
 
 use App\Application\Actions\Video\ListVideosAction;
 use App\Application\Actions\Video\ViewVideoAction;
@@ -34,7 +34,7 @@ return function (App $app) {
        
         $group->get('/{id}', ViewUserAction::class);
     });
-    $app->post('/login',ExistUsersAction::class);
+    $app->post('/login',ExistUserAction::class);
 
     $app->group('/videos', function (Group $group) {
         $group->get('', ListVideosAction::class);
